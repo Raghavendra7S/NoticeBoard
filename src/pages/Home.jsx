@@ -162,7 +162,7 @@ return (
     <div className=" w-full 
      box-shadow-md rounded-xl 
       p-4  
-      bg-[url('/public/daily.jpg')] 
+      bg-[url('/daily.jpg')] 
       bg-cover "
     
       >

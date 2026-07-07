@@ -152,7 +152,7 @@ setActiveSearch
  return (
     <>
 <div className='flex-1 p-2 md:p-4 border-2 text-black'>
-  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/public/monthly.jpg')] bg-cover">
+  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/Monthly.jpg')] bg-cover">
     <div className="form flex flex-col lg:flex-row justify-between gap-4">
           <div>
              <h2>Add The Monthly Task</h2>
