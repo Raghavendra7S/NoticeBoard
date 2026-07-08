@@ -6,7 +6,7 @@ import Sidebar from './Component/Sidebar'
 export default function App() {
   return (
    <>
-        <div className="bg-[url('\main.jpg')] bg-cover text-black min-h-screen flex flex-col ">  
+        <div className="bg-[url('/main.jpg')] bg-cover text-black min-h-screen flex flex-col ">  
              <Header/>
     <div className="flex flex-col md:flex-row  flex-1 text-black">
         <Sidebar/>
