@@ -53,7 +53,7 @@ useEffect(() => {
     <>
     
   <div className="w-full lg:w-72 md:w-64  min-h-screen  p-4 ">
-    <div className="flex flex-col    md:gap-35 lg:gap-40 min-h-screen ">
+    <div className="flex flex-col  sm:gap-20  md:gap-35 lg:gap-40 min-h-screen ">
       <div className="navigation ">
         <ul className="flex flex-col gap-4  p-2 flex-grow font-bold">
             <div>
