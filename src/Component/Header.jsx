@@ -42,8 +42,8 @@ function handleSubmit(e){
    <>     
    <div className="flex p-4 border-b-1 border-gray-600 gap-4 justify-between md:flex md:flex-wrap items-center" >
 
-    <div className="heading flex">
-      <Link to="/">  <h1>NOTICES BOARD</h1></Link>
+    <div className="heading flex font-bold hover:text-blue-800 hover:border-2 hover:rounded hover:p-2">
+      <Link to="/" >  <h1>NOTICES BOARD</h1></Link>
       </div>
 
       <div className="ser flex flex-col md:flex-row gap-4 items-center ">
@@ -53,7 +53,7 @@ function handleSubmit(e){
         type="search"
         value={finds}  
         placeholder="serach with key word"
-        className="p-2 border-1 border-gray-700"
+        className="p-2 border-1 border-gray-700 rounded-xl"
         onChange={(e)=>setfindit(e.target.value)}
         
         />

@@ -151,8 +151,8 @@ setActiveSearch
 
  return (
     <>
-<div className='flex-1 p-2 md:p-4 border-2 text-black'>
-  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/weekly1.jpg')] bg-cover">
+<div className='flex-1 p-2 md:p-4 border-2 text-white'>
+  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/weekly.jpg')] bg-cover">
     <div className="form flex flex-col lg:flex-row justify-between gap-4">
           <div>
              <h2>Add The Weekly Task</h2>
@@ -166,18 +166,18 @@ setActiveSearch
                          <input type="text"
                          value={weekly}
                          maxLength={200}
-                         className="p-4 w-full flex-1  border-2  border-black rounded-lg"
+                         className="p-4 w-full flex-1  border-2  border-white rounded-lg hover:border-3"
                          placeholder='Add_Weekly_Task'
                          onChange={weeklyTask}
                          />
 
-                          <button type="submit" className="border p-2 border-gray-500 rounded-sm w-20 h-10 ">ADD</button>
+                          <button type="submit" className="border p-2 border-gray-200 rounded-sm w-20 h-10  cursor-pointer">ADD</button>
 
 
                       </div>
                       <div className="flex flex-col sm:flex-row justify-around gap-2 mt-2 ">
                           
-                             <p className="text-gray-700">{weekly.length}/200</p>
+                             <p className="text-gray-200">{weekly.length}/200</p>
                           
                          <p>
                             {new Date(stoday).toLocaleDateString("en-GB", {
@@ -212,7 +212,7 @@ setActiveSearch
         </div>
 
 
-             <ul className="Task flex flex-col gap-4 mt-2 text-black">
+             <ul className="Task flex flex-col gap-4 mt-2 text-white">
              
                   {addedWeekly.map((item,index)=>{
                     const modifies=Editing===index
@@ -224,7 +224,7 @@ setActiveSearch
                     
            <li
   key={index}
-  className={`w-full rounded-xl p-4 text-black border
+  className={`w-full rounded-xl p-4 text-white border
     ${isMatch ? "" : ""}
     ${modifies ? "border-orange-500 shadow-lg" : "border-gray-800"}
   `}
@@ -248,7 +248,7 @@ setActiveSearch
                 </div>
           
                    <div className=" ">
-                     <p className="text-black"> DueDate:- {new Date(item.date).toLocaleDateString("en-GB", {
+                     <p className="text-white"> DueDate:- {new Date(item.date).toLocaleDateString("en-GB", {
                            weekday: "long",
                            day: "2-digit",
                            month: "long",
@@ -260,13 +260,13 @@ setActiveSearch
               <div className=" w-full lg:w-72 flex-shrink-0 flex flex-col gap-4">    
                   <div className="">
 
-                    <p className="text-gray-700 break-words">EditDate:-{item.update}</p>
+                    <p className="text-gray-400 break-words">EditDate:-{item.update}</p>
                       
 
                   </div>
                   <div className=" flex flex-row lg:flex-col gap-3">
                      <button 
-                        className=" flex-1 lg:w-full border border-gray-600 rounded-lg p-2 text-black font-black flex gap-2 justify-center cursor-pointer hover:bg-white"
+                        className=" flex-1 lg:w-full border border-gray-600 rounded-lg p-2 text-white font-black flex gap-2 justify-center cursor-pointer hover:bg-white hover:text-black"
                         onClick={()=>edits(index)} ><i className="bi bi-pencil"></i>Modify</button>
 
              

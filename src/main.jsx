@@ -8,7 +8,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import {Search} from './Component/Search'
 
 createRoot(document.getElementById('root')).render(
-<BrowserRouter>
+<BrowserRouter basename={import.meta.env.BASE_URL}>
 <Search>
    <StrictMode>
    <App/>

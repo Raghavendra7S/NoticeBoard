@@ -3,22 +3,22 @@ import { searchContext } from '../Component/Search';
 
 
 export default function Daily() {
-  const [weekly,setWeekly]=useState("")
+  const [day,setday]=useState("")
 
-  const [addedWeekly,setAddedWeekly]=useState(()=>{
+  const [fordays,setfordays]=useState(()=>{
     const storedTasks =
-    localStorage.getItem("addedWeekly");
+    localStorage.getItem("fordays");
     
     if(!storedTasks){
       return [];
     }
    const parsedTasks = JSON.parse(storedTasks);
-    const sevenDays = 24 * 60 * 60 * 1000;
+    const oneDays = 24 * 60 * 60 * 1000;
 
 
     return parsedTasks.filter((weeks) => {
       const elapsed = Date.now() - weeks.created;
-      return elapsed <= sevenDays;
+      return elapsed <= oneDays;
     });
 });
   
@@ -27,7 +27,7 @@ export default function Daily() {
 
 
    const today=new Date();
-   const [stoday,setToday]=useState(today.toLocaleDateString("en-GB",{
+   const [sday,setdays]=useState(today.toLocaleDateString("en-GB",{
     weekday:"long",
     day:"2-digit",
     month:"short",
@@ -37,36 +37,36 @@ export default function Daily() {
    const [update,setupdate]=useState("");
  
 
-   const [completed, setComplete]=useState(false)
-   const [priority, setPriority] = useState(false);
+  
    
-  function weeklyTask(e){
-    setWeekly(e.target.value)
+  function dayTask(e){
+    setday(e.target.value)
 
   }
 
   function handleSubmit(e){
     e.preventDefault()
 
-    if(weekly.trim()==="") return ;
+    if(day.trim()==="") return ;
 
 
     if(Editing===null){
-      setAddedWeekly([...addedWeekly,{
-        weekly:weekly,
+      setfordays([...fordays,{
+        day:day,
         completed:false,
         created:Date.now(),
         id:Date.now(),
-        date:stoday,
-        update:update,
-        priority:false
+        date:sday,
+         update: "",
+  priority: false,
+        
       }]);
     }else{
-      const modify=[...addedWeekly];
+      const modify=[...fordays];
       modify[Editing]={
         ...modify[Editing],
-        weekly:weekly,
-       date:stoday,
+        day:day,
+       date:sday,
         update:new Date().
         toLocaleDateString("en-GB", {
     weekday: "long",
@@ -76,16 +76,16 @@ export default function Daily() {
   }),
      
       }
-      setAddedWeekly(modify)
+      setfordays(modify)
     }
-      setWeekly("");
+      setday("");
 
       
 const now = new Date();
 
 setupdate(now.toLocaleDateString("en-GB",{
   weekday:"long",
-  day:"2-short",
+  day:"2-digit",
   month:"short",
   year:"numeric"
 }));
@@ -93,29 +93,29 @@ setEditing(null);
   }
 
   useEffect (()=>{
-    localStorage.setItem("addedWeekly",JSON.stringify(addedWeekly))
-  },[addedWeekly])
+    localStorage.setItem("fordays",JSON.stringify(fordays))
+  },[fordays])
 
 
   function edits(indexe){
-    setWeekly(addedWeekly[indexe].weekly)
-    setToday(addedWeekly[indexe].date)
+    setday(fordays[indexe].day)
+    setdays(fordays[indexe].date)
     
     setEditing(indexe)
   }
    
 
   function removeTask(indexe){
-    const update=addedWeekly.filter((_, i)=>i!==indexe);
-    setAddedWeekly(update);
+    const update=fordays.filter((_, i)=>i!==indexe);
+    setfordays(update);
   }
 
   function checkbox(index){
-    const updated=[...addedWeekly]
+    const updated=[...fordays]
 
     updated[index].priority=!updated[index].priority;
 
-    setAddedWeekly(updated)
+    setfordays(updated)
 
    
 
@@ -124,7 +124,7 @@ setEditing(null);
 
   function removeAll() {
     console.log("onclicked")
-  const selectedTasks = addedWeekly.filter(task => task.priority);
+  const selectedTasks = fordays.filter(task => task.priority);
 
   if (selectedTasks.length < 2) {
     alert("Please select at least 2 tasks.");
@@ -132,8 +132,8 @@ setEditing(null);
   }
 
   if (window.confirm("Are you sure you want to delete the selected tasks?")) {
-    const remainingTasks = addedWeekly.filter(task => !task.priority);
-    setAddedWeekly(remainingTasks);
+    const remainingTasks = fordays.filter(task => !task.priority);
+    setfordays(remainingTasks);
   }
 }  
 
@@ -151,8 +151,8 @@ setActiveSearch
 
  return (
     <>
-<div className='flex-1 p-2 md:p-4 border-2 text-black'>
-  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/daily1.jpg')] bg-cover">
+<div className='flex-1 p-2 md:p-4  text-white'>
+  <div className="w-full box-shadow-xl rounded-xl p-4 bg-[url('/daily.jpg')] bg-cover">
     <div className="form flex flex-col lg:flex-row justify-between gap-4">
           <div>
              <h2>Add The Daily Task</h2>
@@ -161,26 +161,26 @@ setActiveSearch
             <form className="w-full" onSubmit={handleSubmit}>
 
 
-                    <div className="flex flex-col sm:flex-row  gap-4 justify-center items-center">
+                    <div className="flex flex-col sm:flex-row  gap-4 justify-center items-center text-white">
 
                          <input type="text"
-                         value={weekly}
+                         value={day}
                          maxLength={200}
-                         className="p-4 w-full flex-1  border-2  border-white rounded-lg"
+                         className="p-4 w-full flex-1  border-2 hover:border-4  border-white rounded-lg"
                          placeholder='Add_Daily_Task'
-                         onChange={weeklyTask}
+                         onChange={dayTask}
                          />
 
-                          <button type="submit" className="border p-2 border-gray-300 rounded-sm w-20 h-10 ">ADD</button>
+                          <button type="submit" className="border p-2 border-gray-300 rounded-sm w-20 h-10 cursor-pointer ">ADD</button>
 
 
                       </div>
                       <div className="flex flex-col sm:flex-row justify-around gap-2 mt-2 ">
                           
-                             <p className="text-gray-700">{weekly.length}/200</p>
+                             <p className="text-gray-700">{day.length}/200</p>
                           
                          <p>
-                            {new Date(stoday).toLocaleDateString("en-GB", {
+                            {new Date(sday).toLocaleDateString("en-GB", {
                               weekday: "long",
                               day: "2-digit",
                               month: "long",
@@ -214,11 +214,11 @@ setActiveSearch
 
              <ul className="Task flex flex-col gap-4 mt-2 text-black">
              
-                  {addedWeekly.map((item,index)=>{
+                  {fordays.map((item,index)=>{
                     const modifies=Editing===index
                     const isMatch =
                     activeSearch.trim() !== "" &&
-                    item.weekly.toLowerCase().includes(activeSearch.toLowerCase());
+                    item.day.toLowerCase().includes(activeSearch.toLowerCase());
             
                     return(
                     
@@ -239,16 +239,16 @@ setActiveSearch
                  <div>
                     <input
                       type="checkbox"
-                     checked={item.priority}
+                     checked={!!item.priority}
                      className="w-4 h-4 "
                      onChange={(e)=>checkbox(index)}
                    /> </div>
                    <div className="flex-1 min-w-0 lg-w-80"> 
-                      <p className={`text-lg break-words flex-1 ${isMatch ? "bg-black text-white px-1 rounded":""}` }>{item.weekly}</p></div>
+                      <p className={`text-lg break-words flex-1 ${isMatch ? "bg-black text-white px-1 rounded":""}` }>{item.day}</p></div>
                 </div>
           
                    <div className=" ">
-                     <p className="text-black"> DueDate:- {new Date(item.date).toLocaleDateString("en-GB", {
+                     <p className="text-white"> DueDate:- {new Date(item.date).toLocaleDateString("en-GB", {
                            weekday: "long",
                            day: "2-digit",
                            month: "long",
@@ -260,13 +260,13 @@ setActiveSearch
               <div className=" w-full lg:w-72 flex-shrink-0 flex flex-col gap-4">    
                   <div className="">
 
-                    <p className="text-gray-700 break-words">EditDate:-{item.update}</p>
+                    <p className="text-gray-300 break-words">EditDate:-{item.update}</p>
                       
 
                   </div>
                   <div className=" flex flex-row lg:flex-col gap-3">
                      <button 
-                        className=" flex-1 lg:w-full border border-gray-600 rounded-lg p-2 text-black font-black cursor-pointer"
+                        className=" flex-1 lg:w-full border border-gray-200 rounded-lg p-2 text-white font-black cursor-pointer"
                         onClick={()=>edits(index)} ><i className="bi bi-pencil"></i>Modify</button>
 
              

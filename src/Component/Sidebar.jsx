@@ -55,7 +55,7 @@ useEffect(() => {
   <div className="w-full lg:w-72 md:w-64  min-h-screen  p-4 ">
     <div className="flex flex-col    md:gap-35 lg:gap-40 min-h-screen ">
       <div className="navigation ">
-        <ul className="flex flex-col gap-4  p-2 flex-grow">
+        <ul className="flex flex-col gap-4  p-2 flex-grow font-bold">
             <div>
                 <li>
                    <Link to="/Daily">
@@ -71,7 +71,7 @@ useEffect(() => {
             </div>
           <div>
               <li>
-                  <Link to="/Monthly">
+                  <Link to="/Monthlys">
                   MONTHLY</Link>
               </li>
            </div>
@@ -91,7 +91,7 @@ useEffect(() => {
       <div>
         <div>
             {!editing ? (
-              <button onClick={()=>setEditing(!editing)} className="border-1 border-gray-800 w-full rounded-lg smw-32 h-12 cursor-pointer mt-2">Edit</button>)
+              <button onClick={()=>setEditing(!editing)} className="border-1 border-gray-800 w-full text-white rounded-lg smw-32 h-12 cursor-pointer mt-2">Edit</button>)
               
               :(
                 <div className="flex flex-col gap-2">
@@ -104,10 +104,10 @@ useEffect(() => {
                        onChange={(e) => setNewQuote(e.target.value)}/>
                   </div>
                   <div>
-                    <p className="text-gray-600">{newQuote.length}/200</p>
+                    <p className="text-gray-200">{newQuote.length}/200</p>
                     </div>
                   
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-white">
                         <button onClick={handleSave}>Save</button>
                         <button onClick={handleCancel}>Cancel</button>
                      </div>
