@@ -173,7 +173,7 @@ return (
 
               <div className=" border-b-1 border-gray-600  shadow-2  gap-2  p-4 flex flex-col gap-4 justify-center">
 
-                <div className="flex flex-col sm:flex-row  gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row  gap-4 justify-center text-white">
 
                    <input 
                    type="text"
@@ -220,10 +220,10 @@ return (
       <div className=" p-2 mt-4">
       
       <div className="flex flex-col gap-4 mt-2">
-        <div className="flex flex-col sm:flex-row justify-between gap-4">
+        <div className="flex flex-col sm:flex-row justify-between gap-4 text-white">
         <h1>YOUR TASKS</h1>
         <button className="border-1 border-gray-600 w-full rounded-lg sm:w-32 h-12
-        cursor-pointer " onClick={removeAll}><i className="bi bi-trash"></i> Remove All</button>
+        cursor-pointer hover:bg-white hover:text-black hover:font-bold" onClick={removeAll}><i className="bi bi-trash"></i> Remove All</button>
         </div>
              <ul className="Task flex flex-col gap-4 mt-2">
              
@@ -267,16 +267,16 @@ return (
           
                    <div className="flex flex-wrap mt-2
                    gap-4 ">
-                     <p className="text-gray-400 whitespace-nowrap" > DueDate:-{item.date}</p>
-                     <p className="text-gray-400 whitespace-nowrap">DueTime:-{item.time}</p>
+                     <p className="text-gray-200 whitespace-nowrap" > DueDate:-{item.date}</p>
+                     <p className="text-gray-200 whitespace-nowrap">DueTime:-{item.time}</p>
 
                    </div>
               </div>
 
               <div className="flex flex-col gap-1 min-w-[170px]">    
                   <div className="flex flex-col gap-2">
-                      <p className="text-gray-500 text-2 ">EditTime:-{item.updateTime}</p>
-                      <p className="text-gray-500 whitespace-nowrap">EditDate:-{item.update}</p>
+                      <p className="text-gray-400 text-2 ">EditTime:-{item.updateTime}</p>
+                      <p className="text-gray-400 whitespace-nowrap">EditDate:-{item.update}</p>
                   </div>
                   <div className="flex flex-wrap  gap-2 flex-wrap">
                      <button 
