@@ -167,7 +167,7 @@ return (
     
       >
       
-      <div className="form flex  flex-col lg:flex-row justify-between  gap-4">
+      <div className="form flex  flex-row lg:flex-col md:flex-col sm:flex-row justify-between  gap-4 text-white">
         <h2>Add The New Task</h2>
            <form className="w-full" onSubmit={handleSubmit}>
 
